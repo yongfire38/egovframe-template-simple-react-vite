@@ -4,6 +4,9 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base:{
+    url: '/egovframe-template-simple-react-vite/'
+  },
   server: {
     port: 3000,
   },
