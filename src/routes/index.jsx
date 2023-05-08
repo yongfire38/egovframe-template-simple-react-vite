@@ -65,7 +65,7 @@ import EgovAdminGalleryEdit from "@/pages/admin/gallery/EgovAdminGalleryEdit";
 //사이트관리자 암호 바꾸기 기능 추가 2023.04.15(토) 김일국 추가
 import EgovAdminPasswordUpdate from "@/pages/admin/manager/EgovAdminPasswordUpdate";
 import * as EgovNet from "@/api/egovFetch"; // jwt토큰 위조 검사 때문에 추가
-import initPage from "@/js/ui";
+import initPage from "@/js/ui.js";
 
 const RootRoutes = () => {
   //useLocation객체를 이용하여 정규표현식을 사용한 /admin/~ 으로 시작하는 경로와 비교에 사용(아래 1줄) */}
