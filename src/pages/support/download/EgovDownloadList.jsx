@@ -79,7 +79,7 @@ function EgovDownloadList() {
               <ul>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="/assets/images/sample_pds_list.png" alt="" />
+                    <img src="public/assets/images/sample_pds_list.png" alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>
@@ -91,7 +91,7 @@ function EgovDownloadList() {
                 </li>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="/assets/images/sample_pds_list.png" alt="" />
+                    <img src="public/assets/images/sample_pds_list.png" alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>
@@ -103,7 +103,7 @@ function EgovDownloadList() {
                 </li>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="/assets/images/sample_pds_list.png" alt="" />
+                    <img src="public/assets/images/sample_pds_list.png" alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>
@@ -115,7 +115,7 @@ function EgovDownloadList() {
                 </li>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="/assets/images/sample_pds_list.png" alt="" />
+                    <img src="public/assets/images/sample_pds_list.png" alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>

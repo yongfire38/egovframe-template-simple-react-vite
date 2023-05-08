@@ -62,12 +62,12 @@ function EgovIntroWork() {
             <p className="img">
               <img
                 className="w"
-                src="/assets/images/img_business_intro.png"
+                src="public/assets/images/img_business_intro.png"
                 alt=""
               />
               <img
                 className="m"
-                src="/assets/images/img_business_intro_m.png"
+                src="public/assets/images/img_business_intro_m.png"
                 alt=""
               />
             </p>

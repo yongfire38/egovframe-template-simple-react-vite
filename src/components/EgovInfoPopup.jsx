@@ -28,7 +28,7 @@ function EgovInfoPopup() {
             </li>
           </ul>
           <div className="img">
-            <img src="/assets/images/img_template_intro.png" alt="" />
+            <img src="public/assets/images/img_template_intro.png" alt="" />
           </div>
         </div>
       </div>

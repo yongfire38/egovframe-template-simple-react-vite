@@ -102,7 +102,7 @@ function EgovMain(props) {
         <div className="colbox">
           <div className="left_col">
             <img
-              src="assets/images/img_simple_main.png"
+              src="public/assets/images/img_simple_main.png"
               alt="단순 홈페이지 전자정부 표준프레임워크의 경량환경 내부업무에 대한 최신 정보와 기술을 제공하고 있습니다."
             />
           </div>
