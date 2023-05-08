@@ -5,6 +5,7 @@ import * as EgovNet from "@/api/egovFetch";
 import URL from "@/constants/url";
 
 import simpleMainIng from "/assets/images/img_simple_main.png";
+import initPage from "@/js/ui";
 
 function EgovMain(props) {
   console.group("EgovMain");
@@ -18,6 +19,10 @@ function EgovMain(props) {
   const [gallaryBoard, setGallaryBoard] = useState();
   const [noticeListTag, setNoticeListTag] = useState();
   const [gallaryListTag, setGallaryListTag] = useState();
+
+  useEffect(() => {
+    initPage();
+  });
 
   const retrieveList = useCallback(() => {
     console.groupCollapsed("EgovMain.retrieveList()");
