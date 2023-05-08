@@ -67,32 +67,37 @@ import EgovAdminPasswordUpdate from "@/pages/admin/manager/EgovAdminPasswordUpda
 import * as EgovNet from "@/api/egovFetch"; // jwt토큰 위조 검사 때문에 추가
 import initPage from "@/js/ui";
 
+// 에러 페이지와 같은 상단(EgovHeader) 소스가 제외된 페이지에서 ui.js의 햄버거버튼 작동오류가 발생한다. 
+// 즉, ui.js가 작동되지 않아서 재 로딩 해야 한다. 그래서, useRef객체를 사용하여 이전 페이지 URL을 구하는 코드 추가(아래)
+const usePrevLocation = (location) => {
+	const prevLocRef = useRef(location);
+	useEffect(()=>{
+		prevLocRef.current = location;
+	},[location]);
+	return prevLocRef.current;
+}
+
 const RootRoutes = () => {
   
+  const location = useLocation();
+  const prevLocation = usePrevLocation(location);
 
-  return (
-    <Routes>
-      <Route path={URL.ERROR} element={<EgovError />} />
-      <Route path="*" element={<SecondRoutes />} />
-    </Routes>
-  );
+  
+    return (
+      <Routes>
+        <Route path={URL.ERROR} element={<EgovError prevUrl={prevLocation} />} />
+        <Route path="*" element={<SecondRoutes />} />
+      </Routes>
+    );
 
 };
-
 
 const SecondRoutes = () => {
   const [loginVO, setLoginVO] = useState({});
 
-  //useRef객체를 사용하여 페이지 마운트 된 후 ui.js를 로딩 하도록 변경 코드 추가(아래)
-  const isMounted = useRef(false); // 아래 로그인 이동 부분이 2번 실행되지 않도록 즉, 마운트 될 때만 실행되도록 변수 생성
   useEffect(() => {
-    if (!isMounted.current) {
-      // 컴포넌트 최초 마운트 시 페이지 진입 전(렌더링 전) 실행
-      isMounted.current = true; // 이 값으로 true 일 때만 페이지를 렌더링이 되는 변수 사용.
-    } else {
-      initPage();
-    }
-  }, []);
+    initPage();
+  });
 
   return (
     <>
