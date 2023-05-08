@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom";
 
+import logoFooterImg from "/assets/images/logo_footer_w.png";
+import logoFooterImgMobile from "/assets/images/logo_footer_m.png";
+import bannerImg_01 from "/assets/images/banner_w_01.png";
+import bannerImgMobile_01 from "/assets/images/banner_m_01.png";
+import bannerImg_02 from "/assets/images/banner_w_02.png";
+import bannerImgMobile_02 from "/assets/images/banner_m_02.png";
+
 function EgovFooter() {
   return (
     <div className="footer">
       <div className="inner">
         <h1>
           <Link to="">
-            <img className="w" src="/assets/images/logo_footer_w.png" alt="" />
-            <img className="m" src="/assets/images/logo_footer_m.png" alt="" />
+            <img className="w" src={logoFooterImg} alt="" />
+            <img className="m" src={logoFooterImgMobile} alt="" />
           </Link>
         </h1>
         <div className="info">
@@ -25,12 +32,12 @@ function EgovFooter() {
         </div>
         <div className="right_col">
           <Link to="">
-            <img className="w" src="/assets/images/banner_w_01.png" alt="" />
-            <img className="m" src="/assets/images/banner_m_01.png" alt="" />
+            <img className="w" src={bannerImg_01} alt="" />
+            <img className="m" src={bannerImgMobile_01} alt="" />
           </Link>
           <Link to="">
-            <img className="w" src="/assets/images/banner_w_02.png" alt="" />
-            <img className="m" src="/assets/images/banner_m_02.png" alt="" />
+            <img className="w" src={bannerImg_02} alt="" />
+            <img className="m" src={bannerImgMobile_02} alt="" />
           </Link>
         </div>
       </div>

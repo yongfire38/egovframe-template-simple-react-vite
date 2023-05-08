@@ -5,6 +5,9 @@ import * as EgovNet from "@/api/egovFetch";
 import URL from "@/constants/url";
 import CODE from "@/constants/code";
 
+import logoImg from "/assets/images/logo_w.png";
+import logoImgMobile from "/assets/images/logo_m.png";
+
 function EgovHeader({ loginUser, onChangeLogin }) {
   console.group("EgovHeader");
   console.log("[Start] EgovHeader ------------------------------");
@@ -61,13 +64,13 @@ function EgovHeader({ loginUser, onChangeLogin }) {
         <h1 className="logo">
           <Link to={URL.MAIN} className="w">
             <img
-              src="/assets/images/logo_w.png"
+              src={logoImg}
               alt="표준프레임워크포털 eGovFrame 심플홈페이지"
             />
           </Link>
           <Link to={URL.MAIN} className="m">
             <img
-              src="/assets/images/logo_m.png"
+              src={logoImgMobile}
               alt="표준프레임워크포털 eGovFrame 심플홈페이지"
             />
           </Link>

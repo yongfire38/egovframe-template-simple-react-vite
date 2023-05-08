@@ -1,3 +1,5 @@
+import templateIntroImg from "/assets/images/img_template_intro.png";
+
 function EgovInfoPopup() {
   return (
     <div className="wrap_pop TEMPLATE_INTRO">
@@ -28,7 +30,7 @@ function EgovInfoPopup() {
             </li>
           </ul>
           <div className="img">
-            <img src="/assets/images/img_template_intro.png" alt="" />
+            <img src={templateIntroImg} alt="" />
           </div>
         </div>
       </div>
