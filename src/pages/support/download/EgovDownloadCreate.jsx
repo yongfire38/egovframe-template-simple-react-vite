@@ -68,7 +68,7 @@ function EgovDownloadCreate() {
 
               <div className="info2">
                 <div className="left_col">
-                  <img src="public/assets/images/sample_pds_list.png" alt="" />
+                  <img src="assets/images/sample_pds_list.png" alt="" />
                   <p className="guide">
                     썸네일 이미지는
                     <br />

@@ -40,7 +40,7 @@ function EgovAboutLocation() {
             <h2 className="tit_4">찾아오시는길</h2>
 
             <div className="map">
-              <img src="public/assets/images/map.png" alt="" />
+              <img src="assets/images/map.png" alt="" />
             </div>
 
             <div className="addr">
@@ -72,7 +72,7 @@ function EgovAboutLocation() {
                 </p>
                 <img
                   className="qr"
-                  src="public/assets/images/qrcode.png"
+                  src="assets/images/qrcode.png"
                   alt="qr code"
                 />
               </div>
