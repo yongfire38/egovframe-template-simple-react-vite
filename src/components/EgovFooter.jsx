@@ -6,8 +6,8 @@ function EgovFooter() {
       <div className="inner">
         <h1>
           <Link to="">
-            <img className="w" src="assets/images/logo_footer_w.png" alt="" />
-            <img className="m" src="assets/images/logo_footer_m.png" alt="" />
+            <img className="w" src="/assets/images/logo_footer_w.png" alt="" />
+            <img className="m" src="/assets/images/logo_footer_m.png" alt="" />
           </Link>
         </h1>
         <div className="info">
@@ -25,12 +25,12 @@ function EgovFooter() {
         </div>
         <div className="right_col">
           <Link to="">
-            <img className="w" src="assets/images/banner_w_01.png" alt="" />
-            <img className="m" src="assets/images/banner_m_01.png" alt="" />
+            <img className="w" src="/assets/images/banner_w_01.png" alt="" />
+            <img className="m" src="/assets/images/banner_m_01.png" alt="" />
           </Link>
           <Link to="">
-            <img className="w" src="assets/images/banner_w_02.png" alt="" />
-            <img className="m" src="assets/images/banner_m_02.png" alt="" />
+            <img className="w" src="/assets/images/banner_w_02.png" alt="" />
+            <img className="m" src="/assets/images/banner_m_02.png" alt="" />
           </Link>
         </div>
       </div>

@@ -1,5 +1,8 @@
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavIntro";
 
+import businessIntroImg from "/assets/images/img_business_intro.png"
+import businessIntroImgMobile from "/assets/images/img_business_intro_m.png"
+
 function EgovIntroWork() {
   return (
     <div className="container">
@@ -62,12 +65,12 @@ function EgovIntroWork() {
             <p className="img">
               <img
                 className="w"
-                src="assets/images/img_business_intro.png"
+                src={businessIntroImg}
                 alt=""
               />
               <img
                 className="m"
-                src="assets/images/img_business_intro_m.png"
+                src={businessIntroImgMobile}
                 alt=""
               />
             </p>

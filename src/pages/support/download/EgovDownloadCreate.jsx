@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavSupport";
 import URL from "@/constants/url";
 
+import samplePdsListImg from "/assets/images/sample_pds_list.png";
+
 function EgovDownloadCreate() {
   return (
     <div className="container">
@@ -68,7 +70,7 @@ function EgovDownloadCreate() {
 
               <div className="info2">
                 <div className="left_col">
-                  <img src="assets/images/sample_pds_list.png" alt="" />
+                  <img src={samplePdsListImg} alt="" />
                   <p className="guide">
                     썸네일 이미지는
                     <br />

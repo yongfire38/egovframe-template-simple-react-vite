@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import URL from "@/constants/url";
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavAbout";
 
+import mapImg from "/assets/images/map.png";
+import qrImg from "/assets/images/qrcode.png";
+
 function EgovAboutLocation() {
+
+  console.log();
+
   return (
     <div className="container">
       <div className="c_wrap">
@@ -40,7 +46,7 @@ function EgovAboutLocation() {
             <h2 className="tit_4">찾아오시는길</h2>
 
             <div className="map">
-              <img src="assets/images/map.png" alt="" />
+              <img src={mapImg} alt="" />
             </div>
 
             <div className="addr">
@@ -72,7 +78,7 @@ function EgovAboutLocation() {
                 </p>
                 <img
                   className="qr"
-                  src="assets/images/qrcode.png"
+                  src={qrImg}
                   alt="qr code"
                 />
               </div>

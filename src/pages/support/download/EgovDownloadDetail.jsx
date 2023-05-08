@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavSupport";
 import URL from "@/constants/url";
 
+import samplePdsList from "/assets/images/sample_pds_list.png"
+
 function EgovDownloadDetail() {
   return (
     <div className="container">
@@ -54,7 +56,7 @@ function EgovDownloadDetail() {
 
               <div className="info2">
                 <div className="left_col">
-                  <img src="assets/images/sample_pds_list.png" alt="" />
+                  <img src={samplePdsList} alt="" />
                   <a href="#!" className="btn btn_down">
                     <span>다운로드</span>
                   </a>

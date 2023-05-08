@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavSupport";
 import URL from "@/constants/url";
 
+import samplePdsListImg from "/assets/images/sample_pds_list.png"
+
 function EgovDownloadList() {
   return (
     <div className="container">
@@ -79,7 +81,7 @@ function EgovDownloadList() {
               <ul>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="assets/images/sample_pds_list.png" alt="" />
+                    <img src={samplePdsListImg} alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>
@@ -91,7 +93,7 @@ function EgovDownloadList() {
                 </li>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="assets/images/sample_pds_list.png" alt="" />
+                    <img src={samplePdsListImg} alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>
@@ -103,7 +105,7 @@ function EgovDownloadList() {
                 </li>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="assets/images/sample_pds_list.png" alt="" />
+                    <img src={samplePdsListImg} alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>
@@ -115,7 +117,7 @@ function EgovDownloadList() {
                 </li>
                 <li>
                   <Link to={URL.SUPPORT_DOWNLOAD_DETAIL}>
-                    <img src="assets/images/sample_pds_list.png" alt="" />
+                    <img src={samplePdsListImg} alt="" />
                     <span>
                       <strong>egovframe installer v1.03</strong>
                       <span>
