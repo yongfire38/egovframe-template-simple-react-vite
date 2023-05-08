@@ -19,9 +19,7 @@ function EgovMain(props) {
   const [noticeListTag, setNoticeListTag] = useState();
   const [gallaryListTag, setGallaryListTag] = useState();
 
-  
   const retrieveList = useCallback(() => {
-    
     console.groupCollapsed("EgovMain.retrieveList()");
     /** 정적페이지 배포시에만 주석
 
@@ -92,14 +90,21 @@ function EgovMain(props) {
       }
     );
     */
+
+    let mutNotiListTag = [];
+    mutNotiListTag.push(<li key="0">검색된 결과가 없습니다.</li>); // 게시판 목록 초기값
+    setNoticeListTag(mutNotiListTag);
+
+    let mutGallaryListTag = [];
+    mutGallaryListTag.push(<li key="0">검색된 결과가 없습니다.</li>); // 게시판 목록 초기값
+    setGallaryListTag(mutGallaryListTag);
+
     console.groupEnd("EgovMain.retrieveList()");
   }, []);
 
   useEffect(() => {
     retrieveList();
   }, [retrieveList]);
-
-  
 
   console.log("------------------------------EgovMain [End]");
   console.groupEnd("EgovMain");
