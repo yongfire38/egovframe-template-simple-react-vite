@@ -19,6 +19,8 @@ function EgovMain(props) {
   const [noticeListTag, setNoticeListTag] = useState();
   const [gallaryListTag, setGallaryListTag] = useState();
 
+  /** 정적페이지 배포시에만 주석
+
   const retrieveList = useCallback(() => {
     console.groupCollapsed("EgovMain.retrieveList()");
 
@@ -94,6 +96,8 @@ function EgovMain(props) {
   useEffect(() => {
     retrieveList();
   }, [retrieveList]);
+
+  */
 
   console.log("------------------------------EgovMain [End]");
   console.groupEnd("EgovMain");
