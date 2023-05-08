@@ -1,4 +1,5 @@
 export default function initPage() {
+  console.log("::::::::::::initPage()::::::::::::::::::::");
   /* 전체메뉴 */
   // 웹
   document.querySelector(".btnAllMenu").addEventListener("click", (e) => {
