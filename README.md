@@ -17,6 +17,9 @@
 
 공식 Repository에서 배포 중인 CRA 기반을 Vite로 마이그레이션
 
+main branch : 정적 페이지 배포를 위해 일부 fetch 부분 주석 및 소스 롤백을 진행함
+center_repo branch : 2023/05/08 기준의 센터 최신 소스를 기준으로 마이그레이션함
+
 ### 메뉴 구성
 
 ![menu_sht_v4](https://user-images.githubusercontent.com/3771788/229040036-b38b6c87-64ca-461a-ac9e-78fdcae7ddad.jpg)
