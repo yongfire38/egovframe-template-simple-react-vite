@@ -149,7 +149,7 @@ function EgovAdminGalleryDetail(props) {
               <EgovImageGallery boardFiles={boardAttachFiles} />
 
               <div className="board_attach">
-                {/* 답글이 아니고 게시판 파일 첨부 가능 상태에서만 첨부파일 컴포넌트 노출zzzzzz */}
+                {/* 답글이 아니고 게시판 파일 첨부 가능 상태에서만 첨부파일 컴포넌트 노출 */}
                 {boardDetail.parnts === "0" &&
                   masterBoard.fileAtchPosblAt === "Y" && (
                     <EgovAttachFile boardFiles={boardAttachFiles} />

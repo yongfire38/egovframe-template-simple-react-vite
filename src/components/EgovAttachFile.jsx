@@ -16,7 +16,7 @@ function EgovAttachFile({
   console.groupCollapsed("EgovAttachFile");
 
   // posblAtchFileNumber는 수정일 경우에만 값이 넘어오므로 방어 로직
-  // 해당 컴포넌트는 스케줄 화면과 공유하며, 스케줄에서는 첨부파일을 1개 넣을 수 있으므로 디폴트 값을 1로 설정 zzzzzz
+  // 해당 컴포넌트는 스케줄 화면과 공유하며, 스케줄에서는 첨부파일을 1개 넣을 수 있으므로 디폴트 값을 1로 설정
   if (
     typeof posblAtchFileNumber == "undefined" ||
     posblAtchFileNumber == null
