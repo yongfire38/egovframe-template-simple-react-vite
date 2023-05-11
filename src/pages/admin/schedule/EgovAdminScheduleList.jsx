@@ -9,7 +9,7 @@ import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavAdmin";
 
 function EgovAdminScheduleList(props) {
   console.group("EgovAdminScheduleList");
-  console.log("[Start] EgovAdminScheduleList ------------------------------");
+  console.log("[Start] EgovAdminScheduleList zzzzzzzzzzz------------------------------");
   console.log("EgovAdminScheduleList [props] : ", props);
 
   const location = useLocation();
