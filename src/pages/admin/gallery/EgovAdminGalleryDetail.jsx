@@ -11,10 +11,9 @@ import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavAdmin";
 import EgovAttachFile from "@/components/EgovAttachFile";
 import EgovImageGallery from "@/components/EgovImageGallery";
 
-function EgovAdminGalleryDetail(props) {
-  console.groupEnd("EgovAdminGalleryDetail");
-  console.log("------------------------------");
-  console.log("EgovAdminGalleryDetail [props] : ", props);
+function EgovAdminGalleryDetail() {
+  console.group("EgovAdminGalleryDetail");
+  console.log("--------------------^^^^^^^----------");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -149,7 +148,7 @@ function EgovAdminGalleryDetail(props) {
               <EgovImageGallery boardFiles={boardAttachFiles} />
 
               <div className="board_attach">
-                {/* 답글이 아니고 게시판 파일 첨부 가능 상태에서만 첨부파일 컴포넌트 노출 */}
+                {/* 답글이 아니고 게시판 파일 첨부 가능 상태에서만 첨부파일 컴포넌트 노출   */}
                 {boardDetail.parnts === "0" &&
                   masterBoard.fileAtchPosblAt === "Y" && (
                     <EgovAttachFile boardFiles={boardAttachFiles} />
