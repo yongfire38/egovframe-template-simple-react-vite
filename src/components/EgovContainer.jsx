@@ -11,11 +11,11 @@ function EgovContainer() {
           <ul>
             <li>
               <Link to="" className="home">
-                ,= Home
+                Home
               </Link>
             </li>
             <li>
-              ,<Link to="">알림마당</Link>
+              <Link to="">알림마당</Link>
             </li>
             <li>오늘의 행사</li>
           </ul>
@@ -24,7 +24,7 @@ function EgovContainer() {
 
         <div className="layout">
           {/* <!-- Navigation --> */}
-          <EgovLeftNav />
+          <EgovLeftNav></EgovLeftNav>
           {/* <!--// Navigation --> */}
 
           {/* <!-- 본문 --> */}

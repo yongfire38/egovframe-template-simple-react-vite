@@ -20,6 +20,7 @@ function EgovAdminUsageList(props) {
   const cndRef = useRef();
   const wrdRef = useRef();
 
+  // eslint-disable-next-line no-unused-vars
   const [searchCondition, setSearchCondition] = useState(
     location.state?.searchCondition || {
       pageIndex: 1,
@@ -35,15 +36,13 @@ function EgovAdminUsageList(props) {
     (srchCnd) => {
       console.groupCollapsed("EgovAdminUsageList.retrieveList()");
 
-      const retrieveListURL = "/cop/com/selectBBSUseInfsAPI.do";
-      const jToken = localStorage.getItem("jToken");
+      const retrieveListURL = "/bbsUseInf" + EgovNet.getQueryString(srchCnd);
+
       const requestOptions = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-type": "application/json",
-          Authorization: jToken,
         },
-        body: JSON.stringify(srchCnd),
       };
 
       EgovNet.requestFetch(
@@ -160,7 +159,6 @@ function EgovAdminUsageList(props) {
                       }}
                     >
                       <option value="0">게시판명</option>
-                      <option value="1">게시판유형</option>
                     </select>
                   </label>
                 </li>

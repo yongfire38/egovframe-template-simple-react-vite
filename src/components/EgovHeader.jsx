@@ -7,22 +7,23 @@ import CODE from "@/constants/code";
 
 import logoImg from "/assets/images/logo_w.png";
 import logoImgMobile from "/assets/images/logo_m.png";
+import { getSessionItem, setSessionItem } from "@/utils/storage";
 
-function EgovHeader({ loginUser, onChangeLogin }) {
+function EgovHeader() {
   console.group("EgovHeader");
   console.log("[Start] EgovHeader ------------------------------");
 
-  const sessionUser = sessionStorage.getItem("loginUser");
-  const sessionUserId = JSON.parse(sessionUser)?.id;
-  const sessionUserName = JSON.parse(sessionUser)?.name;
-  const sessionUserSe = JSON.parse(sessionUser)?.userSe;
+  const sessionUser = getSessionItem("loginUser");
+  const sessionUserId = sessionUser?.id;
+  const sessionUserName = sessionUser?.name;
+  const sessionUserSe = sessionUser?.userSe;
 
   const navigate = useNavigate();
 
   const logInHandler = () => {
     // 로그인 정보 없을 시
     navigate(URL.LOGIN);
-    // PC와 Mobile 열린메뉴 닫기: 2023.04.13(목) 김일국 추가
+    // PC와 Mobile 열린메뉴 닫기
     document.querySelector(".all_menu.WEB").classList.add("closed");
     document.querySelector(".btnAllMenu").classList.remove("active");
     document.querySelector(".btnAllMenu").title = "전체메뉴 닫힘";
@@ -30,18 +31,22 @@ function EgovHeader({ loginUser, onChangeLogin }) {
   };
   const logOutHandler = () => {
     // 로그인 정보 존재할 때
-    const logOutUrl = "/uat/uia/actionLogoutAPI.do";
+    const logOutUrl = "/auth/logout";
     const requestOptions = {
+      headers: {
+        "Content-type": "application/json",
+      },
       credentials: "include",
     };
     EgovNet.requestFetch(logOutUrl, requestOptions, function (resp) {
       console.log("===>>> logout resp= ", resp);
       if (parseInt(resp.resultCode) === parseInt(CODE.RCV_SUCCESS)) {
-        onChangeLogin({ loginVO: {} });
-        sessionStorage.setItem("loginUser", JSON.stringify({ id: "" }));
+        //onChangeLogin({ loginVO: {} });
+        setSessionItem("loginUser", { id: "" });
+        setSessionItem("jToken", null);
         window.alert("로그아웃되었습니다!");
         navigate(URL.MAIN);
-        // PC와 Mobile 열린메뉴 닫기: 2023.04.13(목) 김일국 추가
+        // PC와 Mobile 열린메뉴 닫기
         document.querySelector(".all_menu.WEB").classList.add("closed");
         document.querySelector(".btnAllMenu").classList.remove("active");
         document.querySelector(".btnAllMenu").title = "전체메뉴 닫힘";

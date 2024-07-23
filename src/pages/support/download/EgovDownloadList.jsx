@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavSupport";
 import URL from "@/constants/url";
 
-import samplePdsListImg from "/assets/images/sample_pds_list.png"
+import samplePdsListImg from "/assets/images/sample_pds_list.png";
 
 function EgovDownloadList() {
   return (
@@ -43,7 +43,7 @@ function EgovDownloadList() {
             <div className="condition">
               <ul>
                 <li className="third_1 L">
-                  <label className="f_select" htmlFor="sel1">
+                  <label className="f_select" htmlFor="search_select">
                     <select
                       defaultValue={"0"}
                       name="search_select"

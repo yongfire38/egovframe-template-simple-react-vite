@@ -28,24 +28,16 @@ function EgovAttachFile({
 
   function onClickDownFile(atchFileId, fileSn) {
     window.open(
-      SERVER_URL +
-        "/cmm/fms/FileDown.do?atchFileId=" +
-        atchFileId +
-        "&fileSn=" +
-        fileSn +
-        ""
+      SERVER_URL + "/file?atchFileId=" + atchFileId + "&fileSn=" + fileSn + ""
     );
   }
 
   function onClickDeleteFile(atchFileId, fileSn, fileIndex) {
     console.log("onClickDeleteFile Params : ", atchFileId, fileSn, fileIndex);
 
-    const jToken = localStorage.getItem("jToken");
-
     const requestOptions = {
       method: "POST",
       headers: {
-        Authorization: jToken,
         "Content-type": "application/json",
       },
       body: JSON.stringify({
@@ -53,27 +45,24 @@ function EgovAttachFile({
         fileSn: fileSn,
       }),
     };
-    EgovNet.requestFetch(
-      `/cmm/fms/deleteFileInfsAPI.do`,
-      requestOptions,
-      function (resp) {
-        console.log("===>>> board file delete= ", resp);
-        if (Number(resp.resultCode) === Number(CODE.RCV_SUCCESS)) {
-          // 성공
-          console.log("Deleted fileIndex = ", fileIndex);
-          const _deleteFile = boardFiles.splice(fileIndex, 1);
-          const _boardFiles = Object.assign([], boardFiles);
-          fnDeleteFile(_boardFiles);
-          alert("첨부파일이 삭제되었습니다.");
-          fnChangeFile({});
-        } else {
-          navigate(
-            { pathname: URL.ERROR },
-            { state: { msg: resp.resultMessage } }
-          );
-        }
+    EgovNet.requestFetch(`/file`, requestOptions, function (resp) {
+      console.log("===>>> board file delete= ", resp);
+      if (Number(resp.resultCode) === Number(CODE.RCV_SUCCESS)) {
+        // 성공
+        console.log("Deleted fileIndex = ", fileIndex);
+        // eslint-disable-next-line no-unused-vars
+        const _deleteFile = boardFiles.splice(fileIndex, 1);
+        const _boardFiles = Object.assign([], boardFiles);
+        fnDeleteFile(_boardFiles);
+        alert("첨부파일이 삭제되었습니다.");
+        fnChangeFile({});
+      } else {
+        navigate(
+          { pathname: URL.ERROR },
+          { state: { msg: resp.resultMessage } }
+        );
       }
-    );
+    });
   }
 
   function onChangeFileInput(e) {
@@ -117,7 +106,7 @@ function EgovAttachFile({
           <React.Fragment key={["button", `${index}`].join(" ")}>
             <button
               className="btn btn_delete"
-              onClick={(e) => {
+              onClick={() => {
                 onClickDeleteFile(item.atchFileId, item.fileSn, index);
               }}
             ></button>

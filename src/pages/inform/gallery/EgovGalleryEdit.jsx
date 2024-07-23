@@ -34,21 +34,24 @@ function EgovGalleryEdit(props) {
         setModeInfo({
           ...modeInfo,
           modeTitle: "등록",
-          editURL: "/cop/bbs/insertBoardArticleAPI.do",
+          method: "POST",
+          editURL: "/board",
         });
         break;
       case CODE.MODE_MODIFY:
         setModeInfo({
           ...modeInfo,
           modeTitle: "수정",
-          editURL: "/cop/bbs/updateBoardArticleAPI.do",
+          method: "PUT",
+          editURL: `/board/${nttId}`,
         });
         break;
       case CODE.MODE_REPLY:
         setModeInfo({
           ...modeInfo,
           modeTitle: "답글쓰기",
-          editURL: "/cop/bbs/replyBoardArticleAPI.do",
+          method: "POST",
+          editURL: "/boardReply",
         });
         break;
       default:
@@ -59,16 +62,13 @@ function EgovGalleryEdit(props) {
 
   const retrieveDetail = () => {
     if (modeInfo.mode === CODE.MODE_CREATE) {
-      // 등록이면 마스터 정보만 조회함
-      const retrieveDetailURL = "/cop/bbs/selectUserBBSMasterInfAPI.do";
+      // 등록이면 마스터 정보에서 파일 첨부 가능 여부 조회함
+      const retrieveDetailURL = `/boardFileAtch/${bbsId}`;
       const requestOptions = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({
-          bbsId: bbsId,
-        }),
       };
 
       EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
@@ -79,16 +79,12 @@ function EgovGalleryEdit(props) {
       return;
     }
 
-    const retrieveDetailURL = "/cop/bbs/selectBoardArticleAPI.do";
+    const retrieveDetailURL = `/board/${bbsId}/${nttId}`;
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        bbsId: bbsId,
-        nttId: nttId,
-      }),
     };
     EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
       setMasterBoard(resp.result.brdMstrVO);
@@ -122,14 +118,9 @@ function EgovGalleryEdit(props) {
       //console.log("boardDetail [%s] ", key, boardDetail[key]);
     }
 
-    const jToken = localStorage.getItem("jToken");
-
     if (bbsFormVaildator(formData)) {
       const requestOptions = {
-        method: "POST",
-        headers: {
-          Authorization: jToken,
-        },
+        method: modeInfo.method,
         body: formData,
       };
 
@@ -181,7 +172,7 @@ function EgovGalleryEdit(props) {
 
         <div className="layout">
           {/* <!-- Navigation --> */}
-          <EgovLeftNav />
+          <EgovLeftNav></EgovLeftNav>
           {/* <!--// Navigation --> */}
 
           <div className="contents SITE_GALLARY_VIEW" id="contents">
@@ -267,7 +258,7 @@ function EgovGalleryEdit(props) {
                   <a
                     href="#!"
                     className="btn btn_skyblue_h46 w_100"
-                    onClick={(e) => {
+                    onClick={() => {
                       updateBoard();
                     }}
                   >

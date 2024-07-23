@@ -19,15 +19,12 @@ function EgovDailyDetail(props) {
   const [boardAttachFiles, setBoardAttachFiles] = useState();
 
   const retrieveDetail = () => {
-    const retrieveDetailURL = "/cop/smt/sim/egovIndvdlSchdulManageDetailAPI.do";
+    const retrieveDetailURL = `/schedule/${location.state?.schdulId}`;
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        schdulId: location.state?.schdulId,
-      }),
     };
     EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
       let rawScheduleDetail = resp.result.scheduleDetail;
@@ -164,7 +161,6 @@ function EgovDailyDetail(props) {
                 <dt>담당자</dt>
                 <dd>{scheduleDetail.schdulChargerName}</dd>
               </dl>
-
               <EgovAttachFile boardFiles={boardAttachFiles} />
 
               {/* <!-- 버튼영역 --> */}

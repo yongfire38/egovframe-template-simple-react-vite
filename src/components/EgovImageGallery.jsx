@@ -1,7 +1,7 @@
 import React from "react";
 import { SERVER_URL } from "@/config";
 
-function EgovImageGallery({ boardFiles, mode }) {
+function EgovImageGallery({ boardFiles }) {
   let filesTag = [];
 
   if (boardFiles !== undefined) {
@@ -9,7 +9,7 @@ function EgovImageGallery({ boardFiles, mode }) {
       filesTag.push(
         <React.Fragment key={index}>
           <img
-            src={`${SERVER_URL}/cmm/fms/getImage.do?atchFileId=${item.atchFileId}&fileSn=${item.fileSn}`}
+            src={`${SERVER_URL}/image?atchFileId=${item.atchFileId}&fileSn=${item.fileSn}`}
             alt=""
           />
           <br />

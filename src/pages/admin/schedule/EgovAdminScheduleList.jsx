@@ -9,7 +9,7 @@ import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavAdmin";
 
 function EgovAdminScheduleList(props) {
   console.group("EgovAdminScheduleList");
-  console.log("[Start] EgovAdminScheduleList------------------------------");
+  console.log("[Start] EgovAdminScheduleList ------------------------------");
   console.log("EgovAdminScheduleList [props] : ", props);
 
   const location = useLocation();
@@ -71,16 +71,13 @@ function EgovAdminScheduleList(props) {
   const retrieveList = useCallback((srchcnd) => {
     console.groupCollapsed("EgovAdminScheduleList.retrieveList()");
 
-    const retrieveListURL =
-      "/cop/smt/sim/egovIndvdlSchdulManageMonthListAPI.do";
-    const jToken = localStorage.getItem("jToken");
+    const retrieveListURL = "/schedule/month" + EgovNet.getQueryString(srchcnd);
+
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
-        Authorization: jToken,
       },
-      body: JSON.stringify(srchcnd),
     };
 
     EgovNet.requestFetch(
@@ -191,11 +188,11 @@ function EgovAdminScheduleList(props) {
     let keyIdx = 0;
 
     //draw Calendar
-    monthArr.forEach((week, weekIdx) => {
+    monthArr.forEach((week) => {
       console.log();
       mutCalendarTagList.push(
         <tr key={keyIdx++}>
-          {week.map((day, dayIdx) => {
+          {week.map((day) => {
             if (day !== 0) {
               //당월 일별 구현
               let sDate =

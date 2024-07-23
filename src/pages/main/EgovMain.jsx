@@ -15,7 +15,9 @@ function EgovMain(props) {
   const location = useLocation();
   console.log("EgovMain [location] : ", location);
 
+  // eslint-disable-next-line no-unused-vars
   const [noticeBoard, setNoticeBoard] = useState();
+  // eslint-disable-next-line no-unused-vars
   const [gallaryBoard, setGallaryBoard] = useState();
   const [noticeListTag, setNoticeListTag] = useState();
   const [gallaryListTag, setGallaryListTag] = useState();
@@ -26,15 +28,13 @@ function EgovMain(props) {
 
   const retrieveList = useCallback(() => {
     console.groupCollapsed("EgovMain.retrieveList()");
-    /** 정적페이지 배포시에만 주석
 
-    const retrieveListURL = "/cmm/main/mainPageAPI.do";
+    const retrieveListURL = "/mainPage";
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(),
     };
 
     EgovNet.requestFetch(
@@ -51,7 +51,7 @@ function EgovMain(props) {
         resp.result.notiList.forEach(function (item, index) {
           if (index === 0) mutNotiListTag = []; // 목록 초기화
           mutNotiListTag.push(
-            <li key={index}>
+            <li key={item.nttId}>
               <Link
                 to={{ pathname: URL.INFORM_NOTICE_DETAIL }}
                 state={{
@@ -74,7 +74,7 @@ function EgovMain(props) {
         resp.result.galList.forEach(function (item, index) {
           if (index === 0) mutGallaryListTag = []; // 목록 초기화
           mutGallaryListTag.push(
-            <li key={index}>
+            <li key={item.nttId}>
               <Link
                 to={{ pathname: URL.INFORM_GALLERY_DETAIL }}
                 state={{
@@ -94,16 +94,6 @@ function EgovMain(props) {
         console.log("err response : ", resp);
       }
     );
-    */
-
-    let mutNotiListTag = [];
-    mutNotiListTag.push(<li key="0">검색된 결과가 없습니다.</li>); // 게시판 목록 초기값
-    setNoticeListTag(mutNotiListTag);
-
-    let mutGallaryListTag = [];
-    mutGallaryListTag.push(<li key="0">검색된 결과가 없습니다.</li>); // 게시판 목록 초기값
-    setGallaryListTag(mutGallaryListTag);
-
     console.groupEnd("EgovMain.retrieveList()");
   }, []);
 

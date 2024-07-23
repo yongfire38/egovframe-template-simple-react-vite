@@ -104,13 +104,12 @@ function EgovDailyList(props) {
       console.groupCollapsed("EgovDailyDetail.retrieveList()");
 
       const retrieveListURL =
-        "/cop/smt/sim/egovIndvdlSchdulManageDailyListAPI.do";
+        "/schedule/daily" + EgovNet.getQueryString(srchcnd);
       const requestOptions = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(srchcnd),
       };
 
       EgovNet.requestFetch(

@@ -1,12 +1,9 @@
-import { useEffect, useHistory } from "react";
+import { useEffect } from "react";
 
 function EgovViewTemplate(props) {
   console.group("EgovViewTemplate");
   console.log("[Start] EgovViewTemplate ------------------------------");
   console.log("EgovViewTemplate [props] : ", props);
-
-  const history = useHistory();
-  console.log("EgovViewTemplate [history] : ", history);
 
   useEffect(() => {
     return () => {};

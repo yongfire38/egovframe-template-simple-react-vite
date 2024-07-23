@@ -23,6 +23,7 @@ function EgovNoticeList(props) {
 
   const bbsId = location.state?.bbsId || NOTICE_BBS_ID;
 
+  // eslint-disable-next-line no-unused-vars
   const [searchCondition, setSearchCondition] = useState(
     location.state?.searchCondition || {
       bbsId: bbsId,
@@ -40,13 +41,12 @@ function EgovNoticeList(props) {
   const retrieveList = useCallback((searchCondition) => {
     console.groupCollapsed("EgovNoticeList.retrieveList()");
 
-    const retrieveListURL = "/cop/bbs/selectBoardListAPI.do";
+    const retrieveListURL = "/board" + EgovNet.getQueryString(searchCondition);
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(searchCondition),
     };
 
     EgovNet.requestFetch(

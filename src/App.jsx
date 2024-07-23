@@ -1,5 +1,6 @@
 import RootRoutes from "@/routes";
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import "@/css/base.css";
 import "@/css/layout.css";
@@ -11,7 +12,9 @@ function App() {
   return (
     <div className="wrap">
       <React.StrictMode>
-        <RootRoutes />
+        <Router>
+          <RootRoutes />
+        </Router>
       </React.StrictMode>
     </div>
   );

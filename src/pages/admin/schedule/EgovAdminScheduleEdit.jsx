@@ -49,14 +49,16 @@ function EgovAdminScheduleEdit(props) {
         setModeInfo({
           ...modeInfo,
           modeTitle: "등록",
-          editURL: "/cop/smt/sim/egovIndvdlSchdulManageRegistActorAPI.do",
+          method: "POST",
+          editURL: "/schedule",
         });
         break;
       case CODE.MODE_MODIFY:
         setModeInfo({
           ...modeInfo,
           modeTitle: "수정",
-          editURL: "/cop/smt/sim/egovIndvdlSchdulManageModifyActorAPI.do",
+          method: "PUT",
+          editURL: "/schedule",
         });
         break;
       default:
@@ -87,15 +89,12 @@ function EgovAdminScheduleEdit(props) {
       return;
     }
 
-    const retrieveDetailURL = "/cop/smt/sim/egovIndvdlSchdulManageDetailAPI.do";
+    const retrieveDetailURL = `/schedule/${location.state?.schdulId}`;
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        schdulId: location.state?.schdulId,
-      }),
     };
     EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
       let rawScheduleDetail = resp.result.scheduleDetail;
@@ -113,7 +112,7 @@ function EgovAdminScheduleEdit(props) {
 
   const updateSchedule = () => {
     const formData = new FormData();
-    const jToken = localStorage.getItem("jToken");
+
     for (let key in scheduleDetail) {
       formData.append(key, scheduleDetail[key]);
       console.log("scheduleDetail [%s] ", key, scheduleDetail[key]);
@@ -121,12 +120,13 @@ function EgovAdminScheduleEdit(props) {
 
     if (formValidator(formData)) {
       const requestOptions = {
-        method: "POST",
-        headers: {
-          Authorization: jToken,
-        },
+        method: modeInfo.method,
         body: formData,
       };
+
+      if (modeInfo.mode === CODE.MODE_MODIFY) {
+        modeInfo.editURL = `${modeInfo.editURL}/${location.state?.schdulId}`;
+      }
 
       EgovNet.requestFetch(modeInfo.editURL, requestOptions, (resp) => {
         if (Number(resp.resultCode) === Number(CODE.RCV_SUCCESS)) {

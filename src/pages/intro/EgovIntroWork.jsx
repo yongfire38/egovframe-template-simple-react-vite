@@ -1,7 +1,7 @@
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavIntro";
 
-import businessIntroImg from "/assets/images/img_business_intro.png"
-import businessIntroImgMobile from "/assets/images/img_business_intro_m.png"
+import businessIntroImg from "/assets/images/img_business_intro.png";
+import businessIntroImgMobile from "/assets/images/img_business_intro_m.png";
 
 function EgovIntroWork() {
   return (
@@ -25,7 +25,7 @@ function EgovIntroWork() {
 
         <div className="layout">
           {/* <!-- Navigation --> */}
-          <EgovLeftNav />
+          <EgovLeftNav></EgovLeftNav>
           {/* <!--// Navigation --> */}
 
           <div className="contents BUSINESS_INTRO" id="contents">
@@ -63,16 +63,8 @@ function EgovIntroWork() {
             </p>
 
             <p className="img">
-              <img
-                className="w"
-                src={businessIntroImg}
-                alt=""
-              />
-              <img
-                className="m"
-                src={businessIntroImgMobile}
-                alt=""
-              />
+              <img className="w" src={businessIntroImg} alt="" />
+              <img className="m" src={businessIntroImgMobile} alt="" />
             </p>
 
             {/* <!--// 본문 --> */}

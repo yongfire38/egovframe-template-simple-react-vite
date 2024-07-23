@@ -24,7 +24,7 @@ function EgovPaging(props) {
       const firstPageTag = (
         <li key="fp" className="btn">
           <button
-            onClick={(e) => {
+            onClick={() => {
               props.moveToPage(1);
             }}
             className="first"
@@ -40,7 +40,7 @@ function EgovPaging(props) {
       const previousPageTag = (
         <li key="pp" className="btn">
           <button
-            onClick={(e) => {
+            onClick={() => {
               props.moveToPage(prevPageIndex);
             }}
             className="prev"
@@ -66,7 +66,7 @@ function EgovPaging(props) {
         const otherPage = (
           <li key={i}>
             <button
-              onClick={(e) => {
+              onClick={() => {
                 props.moveToPage(i);
               }}
             >
@@ -86,7 +86,7 @@ function EgovPaging(props) {
       const nextPageTag = (
         <li key="np" className="btn">
           <button
-            onClick={(e) => {
+            onClick={() => {
               props.moveToPage(nextPageIndex);
             }}
             className="next"
@@ -101,7 +101,7 @@ function EgovPaging(props) {
       const lastPageTag = (
         <li key="lp" className="btn">
           <button
-            onClick={(e) => {
+            onClick={() => {
               props.moveToPage(totalPageCount);
             }}
             className="last"

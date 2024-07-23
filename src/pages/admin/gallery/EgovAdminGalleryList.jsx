@@ -23,6 +23,7 @@ function EgovAdminGalleryList(props) {
 
   const bbsId = GALLERY_BBS_ID;
 
+  // eslint-disable-next-line no-unused-vars
   const [searchCondition, setSearchCondition] = useState(
     location.state?.searchCondition || {
       bbsId: bbsId,
@@ -39,13 +40,12 @@ function EgovAdminGalleryList(props) {
   const retrieveList = useCallback((searchCondition) => {
     console.groupCollapsed("EgovAdminGalleryList.retrieveList()");
 
-    const retrieveListURL = "/cop/bbs/selectBoardListAPI.do";
+    const retrieveListURL = "/board" + EgovNet.getQueryString(searchCondition);
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(searchCondition),
     };
 
     EgovNet.requestFetch(

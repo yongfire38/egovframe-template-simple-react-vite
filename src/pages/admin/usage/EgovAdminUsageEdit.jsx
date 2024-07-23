@@ -24,6 +24,7 @@ function EgovAdminUsageEdit(props) {
   const [boardDetail, setBoardDetail] = useState({});
   const [notUsedBdMstrList, setNotUsedBdMstrList] = useState([]);
 
+  // eslint-disable-next-line no-unused-vars
   const [useAtRadioGroup, setUseAtRadioGroup] = useState([
     { value: "Y", label: "사용" },
     { value: "N", label: "미사용" },
@@ -35,7 +36,7 @@ function EgovAdminUsageEdit(props) {
         setModeInfo({
           ...modeInfo,
           modeTitle: "등록",
-          editURL: "/cop/com/insertBBSUseInfAPI.do",
+          editURL: "/bbsUseInf",
         });
         break;
 
@@ -43,7 +44,7 @@ function EgovAdminUsageEdit(props) {
         setModeInfo({
           ...modeInfo,
           modeTitle: "수정",
-          editURL: `/cop/com/updateBBSUseInfAPI/${bbsId}.do`,
+          editURL: `/bbsUseInf/${bbsId}`,
         });
         break;
       default:
@@ -62,14 +63,13 @@ function EgovAdminUsageEdit(props) {
       });
 
       //새로 생성된 MstrBoard 리스트 조회
-      const retrieveMasterBdURL = "/cop/com/selectNotUsedBdMstrList.do";
+      const retrieveMasterBdURL = "/notUsedBbsMaster";
 
       const requestOptions = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({}),
       };
       EgovNet.requestFetch(
         retrieveMasterBdURL,
@@ -82,19 +82,13 @@ function EgovAdminUsageEdit(props) {
       return;
     }
 
-    const retrieveDetailURL = "/cop/com/selectBBSUseInfAPI.do";
-    const jToken = localStorage.getItem("jToken");
+    const retrieveDetailURL = `/bbsUseInf/${trgetId}/${bbsId}`;
 
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
-        Authorization: jToken,
       },
-      body: JSON.stringify({
-        bbsId: bbsId,
-        trgetId: trgetId,
-      }),
     };
     EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
       // 수정모드일 경우 조회값 세팅
@@ -108,8 +102,6 @@ function EgovAdminUsageEdit(props) {
   const updateBoard = () => {
     let modeStr = modeInfo.mode === CODE.MODE_CREATE ? "POST" : "PUT";
 
-    const jToken = localStorage.getItem("jToken");
-
     let requestOptions = {};
 
     const formData = new FormData();
@@ -122,9 +114,7 @@ function EgovAdminUsageEdit(props) {
 
       requestOptions = {
         method: modeStr,
-        headers: {
-          Authorization: jToken,
-        },
+        headers: {},
         body: formData,
       };
     } else {
@@ -132,7 +122,6 @@ function EgovAdminUsageEdit(props) {
         method: modeStr,
         headers: {
           "Content-type": "application/json",
-          Authorization: jToken,
         },
         body: JSON.stringify({ ...boardDetail }),
       };
@@ -244,7 +233,7 @@ function EgovAdminUsageEdit(props) {
                           value={boardDetail.bbsId}
                         >
                           <option value="">선택하세요</option>
-                          {notUsedBdMstrList.map((option, i) => {
+                          {notUsedBdMstrList.map((option) => {
                             console.log("notUsedBdMstrList option : ", option);
                             return (
                               <option value={option.bbsId} key={option.bbsId}>
@@ -288,21 +277,16 @@ function EgovAdminUsageEdit(props) {
               {modeInfo.mode === CODE.MODE_MODIFY && (
                 <>
                   <dl>
-                    <dt>
-                      <label htmlFor="">게시판명</label>
-                    </dt>
+                    <dt>게시판명</dt>
                     <dd>{boardDetail && boardDetail.bbsNm}</dd>
                   </dl>
                   <dl>
-                    <dt>
-                      <label htmlFor="">커뮤니티/동호회명</label>
-                    </dt>
+                    <dt>커뮤니티/동호회명</dt>
                     <dd>{boardDetail && boardDetail.cmmntyNm}</dd>
                   </dl>
                   <dl>
                     <dt>
-                      <label htmlFor="">사용여부</label>
-                      <span className="req">필수</span>
+                      사용여부<span className="req">필수</span>
                     </dt>
                     <dd>
                       <EgovRadioButtonGroup

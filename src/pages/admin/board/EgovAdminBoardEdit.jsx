@@ -54,7 +54,7 @@ function EgovAdminBoardEdit(props) {
         setModeInfo({
           ...modeInfo,
           modeTitle: "등록",
-          editURL: "/cop/bbs/insertBBSMasterInfAPI.do",
+          editURL: "/bbsMaster",
         });
         break;
 
@@ -62,7 +62,7 @@ function EgovAdminBoardEdit(props) {
         setModeInfo({
           ...modeInfo,
           modeTitle: "수정",
-          editURL: `/cop/bbs/updateBBSMasterInfAPI/${bbsId}.do`,
+          editURL: `/bbsMaster/${bbsId}`,
         });
         break;
       default:
@@ -82,18 +82,13 @@ function EgovAdminBoardEdit(props) {
       return;
     }
 
-    const retrieveDetailURL = "/cop/bbs/selectBBSMasterInfAPI.do";
-    const jToken = localStorage.getItem("jToken");
+    const retrieveDetailURL = `/bbsMaster/${bbsId}`;
 
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
-        Authorization: jToken,
       },
-      body: JSON.stringify({
-        bbsId: bbsId,
-      }),
     };
 
     EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
@@ -159,8 +154,6 @@ function EgovAdminBoardEdit(props) {
   const updateBoard = () => {
     let modeStr = modeInfo.mode === CODE.MODE_CREATE ? "POST" : "PUT";
 
-    const jToken = localStorage.getItem("jToken");
-
     let requestOptions = {};
 
     if (modeStr === "POST") {
@@ -174,9 +167,7 @@ function EgovAdminBoardEdit(props) {
       if (formValidator(formData)) {
         requestOptions = {
           method: modeStr,
-          headers: {
-            Authorization: jToken,
-          },
+          headers: {},
           body: formData,
         };
 
@@ -197,7 +188,6 @@ function EgovAdminBoardEdit(props) {
           method: modeStr,
           headers: {
             "Content-type": "application/json",
-            Authorization: jToken,
           },
           body: JSON.stringify({ ...boardDetail }),
         };
@@ -217,17 +207,13 @@ function EgovAdminBoardEdit(props) {
   };
 
   const deleteBoardArticle = (bbsId) => {
-    const deleteBoardURL = `/cop/bbs/deleteBBSMasterInfAPI/${bbsId}.do`;
-    const jToken = localStorage.getItem("jToken");
+    const deleteBoardURL = `/bbsMaster/${bbsId}`;
+
     const requestOptions = {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-type": "application/json",
-        Authorization: jToken,
       },
-      body: JSON.stringify({
-        bbsId: bbsId,
-      }),
     };
 
     EgovNet.requestFetch(deleteBoardURL, requestOptions, (resp) => {
@@ -359,7 +345,7 @@ function EgovAdminBoardEdit(props) {
                         }
                         value={boardDetail.bbsTyCode}
                       >
-                        {bbsTyCodeOptions.map((option, i) => {
+                        {bbsTyCodeOptions.map((option) => {
                           return (
                             <option value={option.value} key={option.value}>
                               {option.label}
@@ -400,7 +386,7 @@ function EgovAdminBoardEdit(props) {
                         }
                         value={boardDetail.bbsAttrbCode}
                       >
-                        {bbsAttrbCodeOptions.map((option, i) => {
+                        {bbsAttrbCodeOptions.map((option) => {
                           return (
                             <option value={option.value} key={option.value}>
                               {option.label}
@@ -467,7 +453,9 @@ function EgovAdminBoardEdit(props) {
               </dl>
               <dl>
                 <dt>
-                  <label htmlFor="schdulDeptName">첨부파일가능파일 숫자</label>
+                  <label htmlFor="posblAtchFileNumber">
+                    첨부파일가능파일 숫자
+                  </label>
                   <span className="req">필수</span>
                 </dt>
                 <dd>
@@ -485,7 +473,7 @@ function EgovAdminBoardEdit(props) {
                       value={boardDetail.posblAtchFileNumber}
                       ref={(el) => (checkRef.current[2] = el)}
                     >
-                      {posblAtchFileNumberOptions.map((option, i) => {
+                      {posblAtchFileNumberOptions.map((option) => {
                         return (
                           <option value={option.value} key={option.value}>
                             {option.label}

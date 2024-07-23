@@ -22,15 +22,13 @@ function EgovAdminScheduleDetail(props) {
   const [user, setUser] = useState({});
 
   const retrieveDetail = () => {
-    const retrieveDetailURL = "/cop/smt/sim/egovIndvdlSchdulManageDetailAPI.do";
+    const retrieveDetailURL = `/schedule/${location.state?.schdulId}`;
+
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        schdulId: location.state?.schdulId,
-      }),
     };
     EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
       let rawScheduleDetail = resp.result.scheduleDetail;
@@ -91,17 +89,13 @@ function EgovAdminScheduleDetail(props) {
   };
 
   const onClickDeleteSchedule = (schdulId) => {
-    const deleteBoardURL = `/cop/smt/sim/egovIndvdlSchdulManageDeleteAPI/${schdulId}.do`;
-    const jToken = localStorage.getItem("jToken");
+    const deleteBoardURL = `/schedule/${schdulId}`;
+
     const requestOptions = {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: jToken,
       },
-      body: JSON.stringify({
-        schdulId: schdulId,
-      }),
     };
 
     EgovNet.requestFetch(deleteBoardURL, requestOptions, (resp) => {
@@ -215,7 +209,7 @@ function EgovAdminScheduleDetail(props) {
                     </Link>
                     <button
                       className="btn btn_skyblue_h46 w_100"
-                      onClick={(e) => {
+                      onClick={() => {
                         onClickDeleteSchedule(location.state?.schdulId);
                       }}
                     >

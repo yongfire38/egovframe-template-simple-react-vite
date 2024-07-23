@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavSupport";
 import URL from "@/constants/url";
 
-import samplePdsList from "/assets/images/sample_pds_list.png"
+import samplePdsList from "/assets/images/sample_pds_list.png";
 
 function EgovDownloadDetail() {
   return (

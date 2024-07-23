@@ -17,6 +17,7 @@ function EgovAdminBoardList(props) {
   const location = useLocation();
   console.log("EgovAdminBoardList [location] : ", location);
 
+  // eslint-disable-next-line no-unused-vars
   const [searchCondition, setSearchCondition] = useState(
     location.state?.searchCondition || {
       pageIndex: 1,
@@ -35,15 +36,13 @@ function EgovAdminBoardList(props) {
     (srchCnd) => {
       console.groupCollapsed("EgovAdminBoardList.retrieveList()");
 
-      const retrieveListURL = "/cop/bbs/selectBBSMasterInfsAPI.do";
-      const jToken = localStorage.getItem("jToken");
+      const retrieveListURL = "/bbsMaster" + EgovNet.getQueryString(srchCnd);
+
       const requestOptions = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-type": "application/json",
-          Authorization: jToken,
         },
-        body: JSON.stringify(srchCnd),
       };
 
       EgovNet.requestFetch(

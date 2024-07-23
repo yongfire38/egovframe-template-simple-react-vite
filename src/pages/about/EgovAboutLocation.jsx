@@ -7,9 +7,6 @@ import mapImg from "/assets/images/map.png";
 import qrImg from "/assets/images/qrcode.png";
 
 function EgovAboutLocation() {
-
-  console.log();
-
   return (
     <div className="container">
       <div className="c_wrap">
@@ -46,7 +43,13 @@ function EgovAboutLocation() {
             <h2 className="tit_4">찾아오시는길</h2>
 
             <div className="map">
-              <img src={mapImg} alt="" />
+              <a
+                href="https://naver.me/FHYuP0ok"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={mapImg} alt="" />
+              </a>
             </div>
 
             <div className="addr">
@@ -76,11 +79,7 @@ function EgovAboutLocation() {
                   <br />
                   확인하세요.
                 </p>
-                <img
-                  className="qr"
-                  src={qrImg}
-                  alt="qr code"
-                />
+                <img className="qr" src={qrImg} alt="qr code" />
               </div>
             </div>
 

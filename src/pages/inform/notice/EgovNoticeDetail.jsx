@@ -29,16 +29,12 @@ function EgovNoticeDetail(props) {
   const [boardAttachFiles, setBoardAttachFiles] = useState();
 
   const retrieveDetail = () => {
-    const retrieveDetailURL = "/cop/bbs/selectBoardArticleAPI.do";
+    const retrieveDetailURL = `/board/${bbsId}/${nttId}`;
     const requestOptions = {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        bbsId: bbsId,
-        nttId: nttId,
-      }),
     };
     EgovNet.requestFetch(retrieveDetailURL, requestOptions, function (resp) {
       setMasterBoard(resp.result.brdMstrVO);
@@ -49,17 +45,13 @@ function EgovNoticeDetail(props) {
   };
 
   const onClickDeleteBoardArticle = (bbsId, nttId) => {
-    const deleteBoardURL = `/cop/bbs/deleteBoardArticleAPI/${nttId}.do`;
-    const jToken = localStorage.getItem("jToken");
+    const deleteBoardURL = `/board/${bbsId}/${nttId}`;
+
     const requestOptions = {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-type": "application/json",
-        Authorization: jToken,
       },
-      body: JSON.stringify({
-        bbsId: bbsId,
-      }),
     };
 
     EgovNet.requestFetch(deleteBoardURL, requestOptions, (resp) => {
