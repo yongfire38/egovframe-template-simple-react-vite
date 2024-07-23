@@ -4,7 +4,7 @@
 ![javascript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![nodejs](https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white)
 ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
-![vite](https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)  
+![vite](https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
 ※ 본 프로젝트는 기존 JSP 뷰 방식에서 벗어나 BackEnd와 FrontEnd를 분리하기 위한 예시 파일로 참고만 하시길 바랍니다.
 
@@ -17,8 +17,7 @@
 
 공식 Repository에서 배포 중인 CRA 기반을 Vite로 마이그레이션
 
-main branch : 정적 페이지 배포를 위해 일부 fetch 부분 주석 및 소스 롤백을 진행함  
-center_repo branch : 2023/05/08 기준의 센터 최신 소스를 기준으로 마이그레이션함
+main branch : 24/07/23 기준, 24년 컨트리뷰션이 진행되기 전의 최신 소스 기준으로 마이그레이션을 진행 / Vite 버전 v5.3.4 로 진행함
 
 ### 메뉴 구성
 
@@ -146,5 +145,5 @@ npm run preview
 ---
 
 ### 참조
-[vite 공식 가이드 문서(한글)](https://vitejs-kr.github.io/guide/)
 
+[vite 공식 가이드 문서(한글)](https://vitejs-kr.github.io/guide/)
