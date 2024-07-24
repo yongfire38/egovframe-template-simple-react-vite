@@ -12,7 +12,10 @@ export default defineConfig({
     alias: [{ find: "@", replacement: "/src" }],
   },
   test: {
+    globals: true,
     include: ["src/**/*.test.js", "src/**/*.test.jsx"],
+    environment: "jsdom",
+    setupFiles: "./vitest.setup.js",
   },
   build: {
     chunkSizeWarningLimit: 100000000,

@@ -36,6 +36,7 @@ function EgovQnaList() {
             </div>
 
             <h2 className="tit_2">묻고답하기(Q&amp;A)</h2>
+            <h2 className="tit_6">본 화면은 디자인 예시임</h2>
 
             {/* <!-- 검색조건 --> */}
             <div className="condition">

@@ -38,6 +38,7 @@ function EgovDownloadList() {
             </div>
 
             <h2 className="tit_2">자료실</h2>
+            <h2 className="tit_6">본 화면은 디자인 예시임</h2>
 
             {/* <!-- 검색조건 --> */}
             <div className="condition">
