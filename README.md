@@ -106,10 +106,10 @@ Git에서 clone 한다.
 
 ```bash
 # 프로젝트 저장소를 로컬로 복제
-git clone https://github.com/[계정명]/egovframe-template-simple-react.git
+git clone https://github.com/[계정명]/egovframe-template-simple-react-vite.git
 
 # 복제된 프로젝트 디렉토리로 이동
-cd egovframe-template-simple-react
+cd egovframe-template-simple-react-vite
 
 # node modules를 설치해 준다.
 npm install
@@ -122,7 +122,7 @@ npm install
 
 ```bash
 # .env.development 예시
-VITE_EGOV_CONTEXT_URL=localhost:8080
+VITE_APP_EGOV_CONTEXT_URL=localhost:8080
 ```
 
 ### 3. 프로젝트 실행 및 기타 명령어
@@ -140,6 +140,15 @@ npm run build
 ```bash
 # 로컬에서 미리보기할 때는 아래 명령어를 사용한다.
 npm run preview
+```
+
+```bash
+# 테스트 대상 파일 경로는 vite.config.js에 명시되어 있으며 디폴트로 EgovMain.jsx의 테스트를 실행한다.
+# watch 모드로 테스트를 실행할 경우에는 아래 명령어를 사용한다.
+npm run test
+
+# 일회성 테스트를 실행할 경우에는 아래 명령어를 사용한다.
+npm run test:run
 ```
 
 ---
