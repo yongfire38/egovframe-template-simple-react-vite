@@ -1,7 +1,7 @@
 export default function initPage() {
   /* 전체메뉴 */
   // 웹
-  document.querySelector(".btnAllMenu").addEventListener("click", (e) => {
+  document.querySelector(".btnAllMenu")?.addEventListener("click", (e) => {
     const el = e.target;
 
     el.classList.toggle("active");
@@ -17,7 +17,7 @@ export default function initPage() {
   });
 
   // 모바일 전체메뉴 열기
-  document.querySelector(".btnAllMenuM").addEventListener("click", (e) => {
+  document.querySelector(".btnAllMenuM")?.addEventListener("click", (e) => {
     document.querySelector(".all_menu.Mobile").classList.remove("closed");
     e.target.title = "전체메뉴 열림";
   });
@@ -25,13 +25,13 @@ export default function initPage() {
   // 닫기
   document
     .querySelector(".user_info_m .close")
-    .addEventListener("click", () => {
+    ?.addEventListener("click", () => {
       document.querySelector(".all_menu.Mobile").classList.add("closed");
       document.querySelector(".btnAllMenuM").title = "전체메뉴 닫힘";
     });
 
   // PC 메뉴 항목 클릭시 메뉴 닫기
-  document.querySelector(".all_menu.WEB").addEventListener("click", (e) => {
+  document.querySelector(".all_menu.WEB")?.addEventListener("click", (e) => {
     if (e.target.matches("a")) {
       document.querySelector(".all_menu.WEB").classList.add("closed");
       document.querySelector(".btnAllMenu").classList.remove("active");

@@ -11,6 +11,9 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],
   },
+  test: {
+    include: ["src/**/*.test.js", "src/**/*.test.jsx"],
+  },
   build: {
     chunkSizeWarningLimit: 100000000,
   },
