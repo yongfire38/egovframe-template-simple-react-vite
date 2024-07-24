@@ -104,7 +104,7 @@ function EgovAdminScheduleEdit(props) {
         ...rawScheduleDetail,
         startDate: convertDate(rawScheduleDetail.schdulBgnde),
         endDate: convertDate(rawScheduleDetail.schdulEndde),
-        atchFileId: rawScheduleDetail.atchFileId.trim(),
+        atchFileId: rawScheduleDetail.atchFileId?.trim(),
       });
       setBoardAttachFiles(resp.result.resultFiles);
     });
