@@ -55,6 +55,14 @@ function EgovLeftNavAdmin() {
               사이트관리자 암호변경
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to={URL.ADMIN_MEMBERS}
+              className={({ isActive }) => (isActive ? "cur" : "")}
+            >
+              회원관리
+            </NavLink>
+          </li>
         </ul>
       </div>
     </div>

@@ -9,6 +9,7 @@ import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavInform"
 import EgovPaging from "@/components/EgovPaging";
 
 import { itemIdxByPage } from "@/utils/calc";
+import { getSessionItem } from "@/utils/storage";
 
 function EgovNoticeList(props) {
   console.group("EgovNoticeList");
@@ -20,6 +21,10 @@ function EgovNoticeList(props) {
 
   const cndRef = useRef();
   const wrdRef = useRef();
+
+  //관리자 권한 체크때문에 추가(아래)
+  const sessionUser = getSessionItem("loginUser");
+  const sessionUserSe = sessionUser?.userSe;
 
   const bbsId = location.state?.bbsId || NOTICE_BBS_ID;
 
@@ -198,17 +203,20 @@ function EgovNoticeList(props) {
                     </button>
                   </span>
                 </li>
-                {user.id && masterBoard.bbsUseFlag === "Y" && (
-                  <li>
-                    <Link
-                      to={URL.INFORM_NOTICE_CREATE}
-                      state={{ bbsId: bbsId }}
-                      className="btn btn_blue_h46 pd35"
-                    >
-                      등록
-                    </Link>
-                  </li>
-                )}
+                {/* user.id 대신 권한그룹 세션값 사용 */}
+                {user &&
+                  sessionUserSe === "ADM" &&
+                  masterBoard.bbsUseFlag === "Y" && (
+                    <li>
+                      <Link
+                        to={URL.INFORM_NOTICE_CREATE}
+                        state={{ bbsId: bbsId }}
+                        className="btn btn_blue_h46 pd35"
+                      >
+                        등록
+                      </Link>
+                    </li>
+                  )}
               </ul>
             </div>
             {/* <!--// 검색조건 --> */}

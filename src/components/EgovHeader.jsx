@@ -116,7 +116,7 @@ function EgovHeader() {
                 알림마당
               </NavLink>
             </li>
-            {sessionUserSe === "USR" && (
+            {sessionUserSe === "ADM" && (
               <li>
                 <NavLink
                   to={URL.ADMIN}
@@ -134,8 +134,18 @@ function EgovHeader() {
           {/* 로그아웃 : 로그인 정보 있을때 */}
           {sessionUserId && (
             <>
-              <span className="person">{sessionUserName} </span> 님이, 관리자로
-              로그인하셨습니다.
+              <span className="person">{sessionUserName} </span> 님이,{" "}
+              {sessionUserSe}로 로그인하셨습니다.
+              {sessionUserSe === "USR" && (
+                <NavLink
+                  to={URL.MYPAGE_MODIFY}
+                  className={({ isActive }) =>
+                    isActive ? "btn login cur" : "btn login"
+                  }
+                >
+                  마이페이지
+                </NavLink>
+              )}
               <button onClick={logOutHandler} className="btn">
                 로그아웃
               </button>
@@ -143,9 +153,19 @@ function EgovHeader() {
           )}
           {/* 로그인 : 로그인 정보 없을 때 */}
           {!sessionUserId && (
-            <button onClick={logInHandler} className="btn login">
-              로그인
-            </button>
+            <>
+              <button onClick={logInHandler} className="btn login">
+                로그인
+              </button>
+              <NavLink
+                to={URL.MYPAGE_CREATE}
+                className={({ isActive }) =>
+                  isActive ? "btn login cur" : "btn login"
+                }
+              >
+                회원가입
+              </NavLink>
+            </>
           )}
         </div>
         {/* <!--// PC web에서 보여지는 영역 --> */}
@@ -292,7 +312,7 @@ function EgovHeader() {
               </li>
             </ul>
           </div>
-          {sessionUserSe === "USR" && (
+          {sessionUserSe === "ADM" && (
             <div className="col">
               <h3>사이트관리</h3>
               <ul>
@@ -342,6 +362,14 @@ function EgovHeader() {
                     className={({ isActive }) => (isActive ? "cur" : "")}
                   >
                     사이트관리자 암호변경
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={URL.ADMIN_MEMBERS}
+                    className={({ isActive }) => (isActive ? "cur" : "")}
+                  >
+                    회원관리
                   </NavLink>
                 </li>
               </ul>
@@ -501,7 +529,7 @@ function EgovHeader() {
               </li>
             </ul>
           </div>
-          {sessionUserSe === "USR" && (
+          {sessionUserSe === "ADM" && (
             <>
               <h3>
                 <Link to={URL.ADMIN}>사이트관리</Link>
@@ -554,6 +582,14 @@ function EgovHeader() {
                       className={({ isActive }) => (isActive ? "cur" : "")}
                     >
                       사이트관리자 암호변경
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={URL.ADMIN_MEMBERS}
+                      className={({ isActive }) => (isActive ? "cur" : "")}
+                    >
+                      회원관리
                     </NavLink>
                   </li>
                 </ul>

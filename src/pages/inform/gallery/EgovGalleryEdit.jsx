@@ -10,11 +10,15 @@ import { GALLERY_BBS_ID } from "@/config";
 import { default as EgovLeftNav } from "@/components/leftmenu/EgovLeftNavInform";
 import EgovAttachFile from "@/components/EgovAttachFile";
 import bbsFormVaildator from "@/utils/bbsFormVaildator";
+import { getSessionItem } from "@/utils/storage";
 
 function EgovGalleryEdit(props) {
   console.group("EgovGalleryEdit");
   console.log("------------------------------");
   console.log("EgovGalleryEdit [props] : ", props);
+  //관리자 권한 체크때문에 추가(아래)
+  const sessionUser = getSessionItem("loginUser");
+  const sessionUniqId = sessionUser?.uniqId;
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -254,17 +258,19 @@ function EgovGalleryEdit(props) {
                 )}
               {/* <!-- 버튼영역 --> */}
               <div className="board_btn_area">
-                <div className="left_col btn1">
-                  <a
-                    href="#!"
-                    className="btn btn_skyblue_h46 w_100"
-                    onClick={() => {
-                      updateBoard();
-                    }}
-                  >
-                    저장
-                  </a>
-                </div>
+                {sessionUniqId && (
+                  <div className="left_col btn1">
+                    <a
+                      href="#!"
+                      className="btn btn_skyblue_h46 w_100"
+                      onClick={() => {
+                        updateBoard();
+                      }}
+                    >
+                      저장
+                    </a>
+                  </div>
+                )}
 
                 <div className="right_col btn1">
                   <a
