@@ -13,6 +13,10 @@ import EgovError from "@/components/EgovError";
 import EgovMain from "@/pages/main/EgovMain";
 import EgovLogin from "@/pages/login/EgovLogin";
 
+//SNS
+import SnsNaverCallback from "@/components/sns/SnsNaverCallback";
+import SnsKakaoCallback from "@/components/sns/SnsKakaoCallback";
+
 //ABOUT
 import EgovAboutSite from "@/pages/about/EgovAboutSite";
 import EgovAboutHistory from "@/pages/about/EgovAboutHistory";
@@ -152,6 +156,21 @@ const SecondRoutes = () => {
         <Route
           path={URL.LOGIN}
           element={<EgovLogin onChangeLogin={(user) => setLoginVO(user)} />}
+        />
+
+        {/* Sns Naver Callback */}
+        <Route
+          path={URL.SNS_NAVER_CB}
+          element={
+            <SnsNaverCallback onChangeLogin={(user) => setLoginVO(user)} />
+          }
+        />
+        {/* Sns Kakao Callback */}
+        <Route
+          path={URL.SNS_KAKAO_CB}
+          element={
+            <SnsKakaoCallback onChangeLogin={(user) => setLoginVO(user)} />
+          }
         />
 
         {/* ERROR */}
