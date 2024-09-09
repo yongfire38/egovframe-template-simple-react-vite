@@ -40,7 +40,7 @@ export default function initPage() {
   });
 
   // 회원가입, 마이페이지 항목 클릭시 메뉴 닫기
-  document.querySelector(".user_info").addEventListener("click", (e) => {
+  document.querySelector(".user_info")?.addEventListener("click", (e) => {
     if (e.target.matches("a")) {
       document.querySelector(".all_menu.WEB").classList.add("closed");
       document.querySelector(".btnAllMenu").classList.remove("active");
