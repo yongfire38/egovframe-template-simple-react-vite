@@ -48,7 +48,7 @@ export default function initPage() {
     }
   });
   // 회원가입, 마이페이지 항목 클릭시 모바일 전체메뉴 열기
-  document.querySelector(".user_info_m").addEventListener("click", () => {
+  document.querySelector(".user_info_m")?.addEventListener("click", () => {
     document.querySelector(".all_menu.Mobile").classList.add("closed");
   });
 
