@@ -13,6 +13,7 @@ function EgovAdminPasswordUpdate(props) {
   const navigate = useNavigate();
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const formValidator = (formData) => {
     if (
       formData.get("old_password") === null ||
@@ -36,6 +37,10 @@ function EgovAdminPasswordUpdate(props) {
   };
 
   const updateAdminPassword = () => {
+    if (newPassword !== confirmPassword) {
+      return alert("신규 암호와 입력 확인값이 일치하지 않습니다");
+    }
+
     const editURL = "/admin/password";
 
     let requestOptions = {};
@@ -140,6 +145,24 @@ function EgovAdminPasswordUpdate(props) {
                     placeholder=""
                     defaultValue={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  <label htmlFor="confirmPassword">입력 확인</label>
+                  <span className="req">필수</span>
+                </dt>
+                <dd>
+                  <input
+                    className="f_input2 w_full"
+                    type="password"
+                    name="confirmPassword"
+                    title=""
+                    id="confirmPassword"
+                    placeholder=""
+                    defaultValue={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </dd>
               </dl>
