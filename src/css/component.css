@@ -1130,6 +1130,14 @@ select::-ms-expand {
 }
 
 .tit_6 {
+  color: #222;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: -2px;
+}
+
+.tit_7 {
   color: #ff0000;
   font-size: 20px;
   line-height: 30px;

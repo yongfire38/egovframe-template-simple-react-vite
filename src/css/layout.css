@@ -421,6 +421,10 @@ body {
   margin-top: -2px;
 }
 
+.contents .tit_6:first-child {
+  margin-top: 2px;
+}
+
 .condition + .board_list {
   margin-top: 50px;
 }
@@ -460,6 +464,10 @@ body {
 }
 .tit_5 + .pds_des {
   margin-top: 14px;
+}
+
+.tit_6 + .txt_1 {
+  margin-top: 33px;
 }
 
 .txt_1 + .tit_4 {

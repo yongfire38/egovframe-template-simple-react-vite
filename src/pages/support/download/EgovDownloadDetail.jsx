@@ -38,7 +38,7 @@ function EgovDownloadDetail() {
             </div>
 
             <h2 className="tit_2">자료실</h2>
-            <h2 className="tit_6">본 화면은 디자인 예시임</h2>
+            <h2 className="tit_7">본 화면은 디자인 예시임</h2>
 
             {/* <!-- 상세 --> */}
             <div className="board_view3">
