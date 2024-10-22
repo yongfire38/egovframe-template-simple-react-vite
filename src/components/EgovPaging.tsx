@@ -1,8 +1,20 @@
-function EgovPaging(props) {
+import React from "react";
+
+interface PaginationProps {
+  pagination: {
+    currentPageNo: number;
+    pageSize: number;
+    totalRecordCount: number;
+    recordCountPerPage: number;
+  };
+  moveToPage: (page: number) => void;
+}
+
+const EgovPaging: React.FC<PaginationProps> = (props) => {
   console.groupCollapsed("EgovPaging");
   console.log("EgovPaging [props] : ", props);
 
-  let paginationTag = [];
+  let paginationTag: JSX.Element[] | string = [];
 
   if (props.pagination === undefined) {
     paginationTag = "-";
@@ -112,13 +124,13 @@ function EgovPaging(props) {
     }
   }
   console.log("paginationTag", paginationTag);
-  console.groupEnd("EgovPaging");
+  console.groupEnd();
 
   return (
     <div className="paging">
       <ul>{paginationTag}</ul>
     </div>
   );
-}
+};
 
 export default EgovPaging;

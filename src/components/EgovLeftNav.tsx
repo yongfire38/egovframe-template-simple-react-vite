@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import URL from "@/constants/url";
 
-function EgovLeftNav() {
+interface EgovLeftNavProps {}
+
+function EgovLeftNav({}: EgovLeftNavProps) {
   return (
     <div className="nav">
       <div className="inner">

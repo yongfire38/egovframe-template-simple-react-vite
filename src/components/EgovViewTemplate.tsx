@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 
-function EgovViewTemplate(props) {
+interface EgovViewTemplateProps {
+  children?: React.ReactNode;
+}
+
+function EgovViewTemplate(props: EgovViewTemplateProps) {
   console.group("EgovViewTemplate");
   console.log("[Start] EgovViewTemplate ------------------------------");
   console.log("EgovViewTemplate [props] : ", props);
@@ -10,10 +14,10 @@ function EgovViewTemplate(props) {
   }, []);
 
   console.log("------------------------------EgovViewTemplate [End]");
-  console.groupEnd("EgovViewTemplate");
+  console.groupEnd();
   return (
     <div className="container">
-      <div className="c_wrap"></div>
+      <div className="c_wrap">{props.children}</div>
     </div>
   );
 }

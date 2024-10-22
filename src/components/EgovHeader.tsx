@@ -5,18 +5,25 @@ import * as EgovNet from "@/api/egovFetch";
 import URL from "@/constants/url";
 import CODE from "@/constants/code";
 
-import logoImg from "/assets/images/logo_w.png";
-import logoImgMobile from "/assets/images/logo_m.png";
 import { getSessionItem, setSessionItem } from "@/utils/storage";
+
+interface SessionUser {
+  id: string;
+  name: string;
+  userSe: string;
+}
 
 function EgovHeader() {
   console.group("EgovHeader");
   console.log("[Start] EgovHeader ------------------------------");
 
-  const sessionUser = getSessionItem("loginUser");
+  const sessionUser: SessionUser | null = getSessionItem("loginUser");
   const sessionUserId = sessionUser?.id;
   const sessionUserName = sessionUser?.name;
   const sessionUserSe = sessionUser?.userSe;
+
+  const logoImgUrl = "/assets/images/logo_w.png";
+  const logoImgUrlMobile = "/assets/images/logo_m.png";
 
   const navigate = useNavigate();
 
@@ -24,19 +31,22 @@ function EgovHeader() {
     // 로그인 정보 없을 시
     navigate(URL.LOGIN);
     // PC와 Mobile 열린메뉴 닫기
-    document.querySelector(".all_menu.WEB").classList.add("closed");
-    document.querySelector(".btnAllMenu").classList.remove("active");
-    document.querySelector(".btnAllMenu").title = "전체메뉴 닫힘";
-    document.querySelector(".all_menu.Mobile").classList.add("closed");
+    document.querySelector(".all_menu.WEB")?.classList.add("closed");
+    document.querySelector(".btnAllMenu")?.classList.remove("active");
+    document
+      .querySelector(".btnAllMenu")
+      ?.setAttribute("title", "전체메뉴 닫힘");
+    document.querySelector(".all_menu.Mobile")?.classList.add("closed");
   };
   const logOutHandler = () => {
     // 로그인 정보 존재할 때
     const logOutUrl = "/auth/logout";
     const requestOptions = {
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
-      credentials: "include",
+      credentials: "include" as RequestCredentials,
     };
     EgovNet.requestFetch(logOutUrl, requestOptions, function (resp) {
       console.log("===>>> logout resp= ", resp);
@@ -47,16 +57,18 @@ function EgovHeader() {
         window.alert("로그아웃되었습니다!");
         navigate(URL.MAIN);
         // PC와 Mobile 열린메뉴 닫기
-        document.querySelector(".all_menu.WEB").classList.add("closed");
-        document.querySelector(".btnAllMenu").classList.remove("active");
-        document.querySelector(".btnAllMenu").title = "전체메뉴 닫힘";
-        document.querySelector(".all_menu.Mobile").classList.add("closed");
+        document.querySelector(".all_menu.WEB")?.classList.add("closed");
+        document.querySelector(".btnAllMenu")?.classList.remove("active");
+        document
+          .querySelector(".btnAllMenu")
+          ?.setAttribute("title", "전체메뉴 닫힘");
+        document.querySelector(".all_menu.Mobile")?.classList.add("closed");
       }
     });
   };
 
   console.log("------------------------------EgovHeader [End]");
-  console.groupEnd("EgovHeader");
+  console.groupEnd();
 
   return (
     // <!-- header -->
@@ -69,13 +81,13 @@ function EgovHeader() {
         <h1 className="logo">
           <Link to={URL.MAIN} className="w">
             <img
-              src={logoImg}
+              src={logoImgUrl}
               alt="표준프레임워크포털 eGovFrame 심플홈페이지"
             />
           </Link>
           <Link to={URL.MAIN} className="m">
             <img
-              src={logoImgMobile}
+              src={logoImgUrlMobile}
               alt="표준프레임워크포털 eGovFrame 심플홈페이지"
             />
           </Link>

@@ -1,8 +1,17 @@
 import React from "react";
 import { SERVER_URL } from "@/config";
 
-function EgovImageGallery({ boardFiles }) {
-  let filesTag = [];
+interface BoardFile {
+  atchFileId: string;
+  fileSn: string;
+}
+
+interface EgovImageGalleryProps {
+  boardFiles: BoardFile[];
+}
+
+function EgovImageGallery({ boardFiles }: EgovImageGalleryProps) {
+  let filesTag: JSX.Element[] = [];
 
   if (boardFiles !== undefined) {
     boardFiles.forEach(function (item, index) {
@@ -18,7 +27,7 @@ function EgovImageGallery({ boardFiles }) {
     });
   }
   console.log("filesTag : ", filesTag);
-  console.groupEnd("EgovAttachFile");
+  console.groupEnd();
 
   return <div className="board_attach_img">{filesTag}</div>;
 }

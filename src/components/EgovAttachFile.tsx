@@ -6,33 +6,36 @@ import * as EgovNet from "@/api/egovFetch";
 import { SERVER_URL } from "@/config";
 import CODE from "@/constants/code";
 
+interface EgovAttachFileProps {
+  boardFiles: any[];
+  mode: string;
+  fnChangeFile: (files: FileList | null) => void;
+  fnDeleteFile: (files: any[]) => void;
+  posblAtchFileNumber?: number;
+}
+
 function EgovAttachFile({
   boardFiles,
   mode,
   fnChangeFile,
   fnDeleteFile,
-  posblAtchFileNumber,
-}) {
+  posblAtchFileNumber = 1,
+}: EgovAttachFileProps) {
   console.groupCollapsed("EgovAttachFile");
-
-  // posblAtchFileNumber는 수정일 경우에만 값이 넘어오므로 방어 로직
-  // 해당 컴포넌트는 스케줄 화면과 공유하며, 스케줄에서는 첨부파일을 1개 넣을 수 있으므로 디폴트 값을 1로 설정
-  if (
-    typeof posblAtchFileNumber == "undefined" ||
-    posblAtchFileNumber == null
-  ) {
-    posblAtchFileNumber = 1;
-  }
 
   const navigate = useNavigate();
 
-  function onClickDownFile(atchFileId, fileSn) {
+  function onClickDownFile(atchFileId: string, fileSn: string) {
     window.open(
       SERVER_URL + "/file?atchFileId=" + atchFileId + "&fileSn=" + fileSn + ""
     );
   }
 
-  function onClickDeleteFile(atchFileId, fileSn, fileIndex) {
+  function onClickDeleteFile(
+    atchFileId: string,
+    fileSn: string,
+    fileIndex: number
+  ) {
     console.log("onClickDeleteFile Params : ", atchFileId, fileSn, fileIndex);
 
     const requestOptions = {
@@ -55,7 +58,7 @@ function EgovAttachFile({
         const _boardFiles = Object.assign([], boardFiles);
         fnDeleteFile(_boardFiles);
         alert("첨부파일이 삭제되었습니다.");
-        fnChangeFile({});
+        fnChangeFile(null);
       } else {
         navigate(
           { pathname: URL.ERROR },
@@ -65,21 +68,21 @@ function EgovAttachFile({
     });
   }
 
-  function onChangeFileInput(e) {
-    console.log("===>>> e = " + e.target.files[0]);
+  function onChangeFileInput(e: React.ChangeEvent<HTMLInputElement>) {
+    console.log("===>>> e = " + e.target.files?.[0]);
     if (
-      e.target.files.length + (boardFiles?.length || 0) >
-      posblAtchFileNumber
+      e.target.files &&
+      e.target.files.length + (boardFiles?.length || 0) > posblAtchFileNumber
     ) {
       alert("총 첨부파일 개수는 " + posblAtchFileNumber + " 까지 입니다.");
-      e.target.value = null; // 파일 입력란 화면 초기화
-      fnChangeFile({}); // 상위 컴포넌트의 저장된 값 초기화
+      e.target.value = ""; // 파일 입력란 화면 초기화
+      fnChangeFile(null); // 상위 컴포넌트의 저장된 값 초기화
       return false;
     }
     fnChangeFile(e.target.files);
   }
 
-  let filesTag = [];
+  let filesTag: JSX.Element[] = [];
 
   if (boardFiles !== undefined) {
     boardFiles.forEach(function (item, index) {
@@ -117,7 +120,7 @@ function EgovAttachFile({
     });
   }
   console.log("filesTag : ", filesTag);
-  console.groupEnd("EgovAttachFile");
+  console.groupEnd();
 
   return (
     <dl>

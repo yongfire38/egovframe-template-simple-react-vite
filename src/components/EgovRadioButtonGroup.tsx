@@ -1,6 +1,23 @@
 import EgovRadioButton from "@/components/EgovRadioButton";
 
-function EgovRadioButtonGroup({ name, radioGroup, setValue, setter }) {
+interface RadioOption {
+  label: string;
+  value: string;
+}
+
+interface EgovRadioButtonGroupProps {
+  name: string;
+  radioGroup: RadioOption[];
+  setValue: string;
+  setter: (value: string) => void;
+}
+
+function EgovRadioButtonGroup({
+  name,
+  radioGroup,
+  setValue,
+  setter,
+}: EgovRadioButtonGroupProps) {
   return (
     <>
       {radioGroup.map((radioOption, i) => {

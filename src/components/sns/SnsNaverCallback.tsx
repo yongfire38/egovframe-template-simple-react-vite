@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useRef } from "react";
+import { SetStateAction, useEffect } from "react";
 import * as EgovNet from "@/api/egovFetch";
 import CODE from "@/constants/code";
 import { setSessionItem } from "@/utils/storage";
@@ -10,19 +10,12 @@ interface SnsNaverCallbackProps {
 const SnsNaverCallback: React.FC<SnsNaverCallbackProps> = ({
   onChangeLogin,
 }) => {
-  const allMenuWebRef = useRef<HTMLDivElement | null>(null);
-  const btnAllMenuRef = useRef<HTMLButtonElement | null>(null);
-  const allMenuMobileRef = useRef<HTMLDivElement | null>(null);
-
   //백엔드 호출
   const callBackEnd = () => {
-    // URL에서 code와 state 파라미터 추출
-    const urlParams = new URL(window.location.href).searchParams;
-    const code = urlParams.get("code");
-    const state = urlParams.get("state");
-
+    // 백엔드로 코드값을 넘겨주는 로직
+    let code = new URL(window.location.href).searchParams.get("code");
+    let state = new URL(window.location.href).searchParams.get("state");
     console.log("code, state=====>", code, state);
-
     // 요청이 성공하면
     if (code) {
       const naverLoginUrl = `/login/naver/callback?code=${code}&state=${state}`;
@@ -46,18 +39,14 @@ const SnsNaverCallback: React.FC<SnsNaverCallbackProps> = ({
             setSessionItem("jToken", jToken);
             setSessionItem("loginUser", resultVO);
             onChangeLogin(resultVO);
-
             // PC와 Mobile 열린메뉴 닫기
-            if (allMenuWebRef.current)
-              allMenuWebRef.current.classList.add("closed");
-            if (btnAllMenuRef.current) {
-              btnAllMenuRef.current.classList.remove("active");
-              btnAllMenuRef.current.title = "전체메뉴 닫힘";
-            }
-            if (allMenuMobileRef.current)
-              allMenuMobileRef.current.classList.add("closed");
-
-            alert("Sns 간편 로그인 중...");
+            document.querySelector(".all_menu.WEB")?.classList.add("closed");
+            document.querySelector(".btnAllMenu")?.classList.remove("active");
+            document
+              .querySelector(".btnAllMenu")
+              ?.setAttribute("title", "전체메뉴 닫힘");
+            document.querySelector(".all_menu.Mobile")?.classList.add("closed");
+            alert("Sns 간편 로그인 중..."); //공통 alert 사용대신해서
           } else {
             //React.StrictMode 에서 fetch가 자동으로 2번 실행할 때 아래 메인화면으로 이동된다.
             window.location.replace("/");
