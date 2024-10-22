@@ -1,6 +1,6 @@
-import templateIntroImg from "/assets/images/img_template_intro.png";
-
 function EgovInfoPopup() {
+  const templateIntroImg = "/assets/images/img_template_intro.png";
+
   return (
     <div className="wrap_pop TEMPLATE_INTRO">
       <div className="pop_inner">

@@ -5,7 +5,7 @@ function EgovLeftNavInform() {
   console.groupCollapsed("EgovLeftNavInform");
   console.log("[Start] EgovLeftNavInform ------------------------------");
   console.log("------------------------------EgovLeftNavInform [End]");
-  console.groupEnd("EgovLeftNavInform");
+  console.groupEnd();
   return (
     <div className="nav">
       <div className="inner">
