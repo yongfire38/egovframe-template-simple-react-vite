@@ -1,4 +1,10 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  SetStateAction,
+} from "react";
 import { Navigate, Routes, Route, useLocation } from "react-router-dom";
 
 import URL from "@/constants/url";
@@ -90,7 +96,7 @@ const RootRoutes = () => {
       method: "POST",
     };
 
-    EgovNet.requestFetch(jwtAuthURL, requestOptions, (resp) => {
+    EgovNet.requestFetch(jwtAuthURL, requestOptions, (resp: boolean) => {
       if (resp === false) {
         setMounted(false);
       } else {
@@ -99,7 +105,7 @@ const RootRoutes = () => {
     });
 
     console.log("------------------------------jwtAuthentication [End]");
-    console.groupEnd("jwtAuthentication");
+    console.groupEnd();
   }, []);
 
   //시스템관리 메뉴인 /admin/으로 시작하는 URL은 모두 로그인이 필요하도록 코드추가(아래)
@@ -155,21 +161,29 @@ const SecondRoutes = () => {
         {/* LOGIN */}
         <Route
           path={URL.LOGIN}
-          element={<EgovLogin onChangeLogin={(user) => setLoginVO(user)} />}
+          element={
+            <EgovLogin
+              onChangeLogin={(user: SetStateAction<{}>) => setLoginVO(user)}
+            />
+          }
         />
 
         {/* Sns Naver Callback */}
         <Route
           path={URL.SNS_NAVER_CB}
           element={
-            <SnsNaverCallback onChangeLogin={(user) => setLoginVO(user)} />
+            <SnsNaverCallback
+              onChangeLogin={(user: SetStateAction<{}>) => setLoginVO(user)}
+            />
           }
         />
         {/* Sns Kakao Callback */}
         <Route
           path={URL.SNS_KAKAO_CB}
           element={
-            <SnsKakaoCallback onChangeLogin={(user) => setLoginVO(user)} />
+            <SnsKakaoCallback
+              onChangeLogin={(user: SetStateAction<{}>) => setLoginVO(user)}
+            />
           }
         />
 
