@@ -119,10 +119,10 @@ Git에서 clone 한다.
 
 ```bash
 # 프로젝트 저장소를 로컬로 복제
-git clone https://github.com/[계정명]/egovframe-template-simple-react-vite.git
+git clone https://github.com/[계정명]/egovframe-template-simple-react.git
 
 # 복제된 프로젝트 디렉토리로 이동
-cd egovframe-template-simple-react-vite
+cd egovframe-template-simple-react
 
 # node modules를 설치해 준다.
 npm install

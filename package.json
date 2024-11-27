@@ -1,10 +1,10 @@
 {
-  "name": "egovframe-template-simple-react-vite",
+  "name": "egovframe-template-simple-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "dependencies": {
-    "egovframe-template-simple-react-vite": "file:",
+    "egovframe-template-simple-react": "file:",
     "qs": "^6.11.0",
     "react": "^18.3.1",
     "react-datepicker": "^4.8.0",

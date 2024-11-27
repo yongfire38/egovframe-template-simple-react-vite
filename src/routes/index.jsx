@@ -136,6 +136,7 @@ const SecondRoutes = () => {
 
   //useRef객체를 사용하여 페이지 마운트 된 후 ui.js를 로딩 하도록 변경 코드 추가(아래)
   const isMounted = useRef(false); // 아래 로그인 이동 부분이 2번 실행되지 않도록 즉, 마운트 될 때만 실행되도록 변수 생성
+
   useEffect(() => {
     if (!isMounted.current) {
       // 컴포넌트 최초 마운트 시 페이지 진입 전(렌더링 전) 실행
