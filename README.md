@@ -15,13 +15,9 @@
 단순 홈페이지 기능 구현 시 필수적인 부분만 사용 가능하도록 경량화 된 실행환경 제공  
 메인 페이지, 사용자 관리, 공지사항 관리, 게시판 관리, 안내 관리 기능을 제공
 
-공식 Repository에서 배포 중인 CRA 기반을 Vite로 마이그레이션
-
-main branch : 24/10/17 기준, 24년 컨트리뷰션이 반영된 최신 소스 기준으로 마이그레이션을 진행 / Vite 버전 v5.3.4 로 진행함
-
 ### 메뉴 구성
 
-![menu_sht_v4](https://user-images.githubusercontent.com/3771788/229040036-b38b6c87-64ca-461a-ac9e-78fdcae7ddad.jpg)
+![menu_sht_v4](https://github.com/user-attachments/assets/4888a564-b3e9-4a3d-a72d-77bc26a6b410)
 
 ## 참고 화면 및 메뉴 설명
 
